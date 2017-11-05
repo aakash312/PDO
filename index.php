@@ -34,7 +34,7 @@
 	{
 	echo $sql . "<br>" . $e->getMessage();
 	}
-	echo 'Number of records in the record are - <br> ' ;
+	echo 'Number of results in the record are - <br> ' ;
 	print_r(count($result));
 	echo '<br>';
 	echo '<table    border="1 px" " style=border-collapse: collapse"  >';
