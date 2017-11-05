@@ -23,4 +23,35 @@
 	{
 	echo 'Connection failed, 505 CONNECTION  ERROR ' . $e->getMessage() . '<br>';
 	}
+	 try
+	 {
+	$stmt = $dbh->prepare("SELECT * FROM accounts where id<6");
+	$stmt->execute();
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$result = $stmt->fetchAll();
+	 }
+	catch (PDOException $e)
+	{
+	echo $sql . "<br>" . $e->getMessage();
+	}
+	echo 'Number of records in the record are - <br> ' ;
+	print_r(count($result));
+	echo '<br>';
+	echo '<table    border="1 px" " style=border-collapse: collapse"  >';
+	echo '<tr><th>id</th><th>email</th><th>fname</th><th>lname</th><th>phone</th><th>birthday</th><th>gender</th><th>password</th></tr>';
+	foreach ($result as $label)
+	{
+	echo '<tr>';
+	echo '<td>'.$label['id'].'</td>';
+	echo '<td>'.$label['email'].'</td>';
+	echo '<td>'.$label['fname'].'</td>';
+	echo '<td>'.$label['lname'].'</td>';
+	echo '<td>'.$label['phone'].'</td>';
+	echo '<td>'.$label['birthday'].'</td>';
+	echo '<td>'.$label['gender'].'</td>';
+	echo '<td>'.$label['password'].'</td>';
+	echo '</tr>';
+	}
+	echo '</table>';
+
 	?>
